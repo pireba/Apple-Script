@@ -4,7 +4,7 @@
 	
 	<groupId>com.github.pireba</groupId>
 	<artifactId>applescript</artifactId>
-	<version>0.0.5-SNAPSHOT</version>
+	<version>0.0.5</version>
 	<packaging>jar</packaging>
 	
 	<name>Apple-Script</name>
@@ -43,7 +43,7 @@
 		<url>https://github.com/pireba/Apple-Script</url>
 		<connection>scm:git:https://github.com/pireba/Apple-Script.git</connection>
 		<developerConnection>scm:git:https://github.com/pireba/Apple-Script.git</developerConnection>
-	  <tag>HEAD</tag>
+	  <tag>applescript-0.0.5</tag>
   </scm>
 			
 	<properties>
