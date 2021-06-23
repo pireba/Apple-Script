@@ -87,6 +87,11 @@ public class AppleScriptObject {
 	private static final String REGEX_INTEGER = "^\\-?[0-9]+$";
 	
 	/**
+	 * Regular expression that matches a string value.
+	 */
+	private static final String REGEX_STRING = "^\\\"(.*)\\\"$";
+	
+	/**
 	 * The object to store the value.
 	 */
 	private Object object;
@@ -322,10 +327,11 @@ public class AppleScriptObject {
 	 * 		Is thrown if this object is not a string.
 	 */
 	public String getString() throws AppleScriptException {
-		if ( this.isString() ) {
-			return (String) this.object;
-		} else {
-			throw new AppleScriptException("Object is not a String.");
+		try {
+			String string = (String) this.object;
+			return string.replaceAll(REGEX_STRING, "$1");
+		} catch ( Exception e ) {
+			throw new AppleScriptException("Object is not a String.", e);
 		}
 	}
 	
@@ -470,7 +476,17 @@ public class AppleScriptObject {
 	 * 		{@code True} if this object is a string - {@code False} otherwise.
 	 */
 	public boolean isString() {
-		return this.object instanceof String;
+		try {
+			if ( this.object.toString().matches(REGEX_STRING) ) {
+				return true;
+			} else if ( this.object instanceof String ) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch ( Exception e ) {
+			return false;
+		}
 	}
 	
 	@Override

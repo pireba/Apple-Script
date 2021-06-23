@@ -110,6 +110,7 @@ public class AppleScriptTokenizer {
 			throw new AppleScriptException("A string must begin with a double quote (\"): '"+c+"'.");
 		}
 		
+		sb.append(c);
 		while ( (c = this.getNextChar()) != 0 ) {
 			switch (c) {
 			case '\\':
@@ -143,6 +144,7 @@ public class AppleScriptTokenizer {
 				}
 				break;
 			case '"':
+				sb.append(c);
 				return sb.toString();
 			default:
 				sb.append(c);

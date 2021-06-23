@@ -19,7 +19,7 @@ public class AppleScriptMap extends HashMap<String, AppleScriptObject>{
 	/**
 	 * Regular expression that matches a key-value pair.
 	 */
-	private static final String REGEX_MAP = "^(\\|.*\\||^[A-Za-z][A-Za-z0-9_\\ ]+)\\:(.*)$";
+	private static final String REGEX_MAP = "^([A-Za-z][A-Za-z0-9_\\ ]+|\\|.*\\|)\\:(.*)$";
 	
 	/**
 	 * Creates an {@linkplain AppleScriptMap} from an {@linkplain AppleScriptList}.
@@ -33,14 +33,10 @@ public class AppleScriptMap extends HashMap<String, AppleScriptObject>{
 	 */
 	public AppleScriptMap(AppleScriptList list) throws AppleScriptException {
 		for ( AppleScriptObject object : list ) {
-			if ( object.isString() ) {
-				String string = object.getString();
-				String key = this.getKey(string);
-				AppleScriptObject value = this.getValue(string);
-				this.put(key, value);
-			} else {
-				throw new AppleScriptException("List item must be a String.");
-			}
+			String string = object.toString();
+			String key = this.getKey(string);
+			AppleScriptObject value = this.getValue(string);
+			this.put(key, value);
 		}
 	}
 	
@@ -68,11 +64,7 @@ public class AppleScriptMap extends HashMap<String, AppleScriptObject>{
 		
 		AppleScriptObject object = list.get(0);
 		
-		if ( ! object.isString() ) {
-			return false;
-		}
-		
-		if ( ! object.getString().matches(REGEX_MAP) ) {
+		if ( ! object.toString().matches(REGEX_MAP) ) {
 			return false;
 		}
 		
