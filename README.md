@@ -1,5 +1,7 @@
 # Apple-Script
-[![Maven Central](https://img.shields.io/maven-central/v/com.github.pireba/applescript?style=for-the-badge)](https://mvnrepository.com/artifact/com.github.pireba/applescript)
+
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.pireba/applescript?color=success&logo=apachemaven&style=for-the-badge)](https://mvnrepository.com/artifact/com.github.pireba/applescript)
+[![Javadoc](https://javadoc.io/badge2/com.github.pireba/applescript/javadoc.svg?color=success&logo=readthedocs&style=for-the-badge)](https://javadoc.io/doc/com.github.pireba/applescript) 
 
 ## Overview
 With Apple-Script you can execute AppleScript commands in Java.
